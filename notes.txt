@@ -1,0 +1,21 @@
+
+
+
+- Not a fan of the 'technology' column and then column for each capacity. Should ideally be normalised further.
+- Pipelines needs a status field
+
+
+
+
+Mention
+- Included a pipeline status
+- What if you have a project with multiple counterparties
+- Adding new roles to a counterparty is tricky, should ideally be normalised
+
+
+
+To do:
+- Fix callbacks for updating the editable tables
+- Add view/edit buttons to tables
+- Create components for reusability, use it to fix the search results view
+    - View pipelines

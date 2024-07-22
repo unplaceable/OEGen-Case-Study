@@ -1,0 +1,7 @@
+streamlit==1.36.0
+pydeck==0.9.1
+pydantic==2.8.2
+pydantic-extra-types==2.9.0
+matplotlib==3.9.1
+scikit-learn==1.5.1
+numpy==2.0.0
