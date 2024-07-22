@@ -15,14 +15,17 @@ st.title("📊 Pipeline Dashboard")
 
 # Chat
 with st.sidebar:
-    messages = st.container(height=300)
-    messages.chat_message("assistant").write('Ask me about the data on this page')
-    if prompt := st.chat_input("Say something...", max_chars=200):
-        messages.chat_message("user").write(prompt)
-        time.sleep(1)
-        
-        messages.chat_message("assistant").write(f"Quantum Quarries has the largest capacity at 62.052MWp. It uses Wind.")
-    st.markdown('*The above is a simulation only, I lost access to the account that has OpenAI credits.*')
+
+    with st.expander("Ask AI", expanded=True):
+    
+        messages = st.container(height=300)
+        messages.chat_message("assistant").write('Ask me about the data on this page')
+        if prompt := st.chat_input("Say something...", max_chars=200):
+            messages.chat_message("user").write(prompt)
+            time.sleep(1)
+            
+            messages.chat_message("assistant").write(f"Quantum Quarries has the largest capacity at 62.052MWp. It uses Wind.")
+        st.markdown('*The above is a simulation only, I lost access to the account that has OpenAI credits.*')
 
 # Map
 st.markdown('### Locations')
