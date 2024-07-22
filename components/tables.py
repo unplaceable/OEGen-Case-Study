@@ -49,7 +49,7 @@ def information_point_table(information_points):
 
     # Filter DataFrame to only include the specified columns
     columns_to_include = [
-        "Title", "Market", "Rating"
+        "Title", "Market", "Impact", "Likelihood", "Rating"
     ]
     df_filtered = information_points[columns_to_include]
 

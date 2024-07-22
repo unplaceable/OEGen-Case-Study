@@ -17,7 +17,7 @@ if "information_point_id" in st.query_params:
     st.title(f'ⓘ {information_point["Title"]}')
 
     col1, col2, col3 = st.columns(3)
-    col1.metric(label="Market", value=information_point['Technology'])
+    col1.metric(label="Technology", value=information_point['Technology'])
     col2.metric(label="Rating", value=information_point['Rating'])
     col3.metric(label="Market", value=information_point['Market'])
 

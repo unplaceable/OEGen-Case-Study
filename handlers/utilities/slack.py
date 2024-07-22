@@ -10,7 +10,7 @@ def new_pipeline_alert(pipeline_data):
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-				"text": f"A new pipeline has been created!\n>Name: {pipeline_data['ProjectName']}\n>Technology: {pipeline_data['Technology']}\n>Build date: {pipeline_data['RTBDate']}"
+				"text": f"A new pipeline has been created!\n>Name: {pipeline_data['ProjectName']}\n>Technology: {pipeline_data['Technology']}\n>Capacity (MWp): {pipeline_data['Capacity']}"
 			},
 			"accessory": {
 				"type": "button",
