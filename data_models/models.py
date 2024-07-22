@@ -3,6 +3,7 @@ from typing import Tuple
 import uuid
 import json
 import ast
+import pandas as pd
 
 from pydantic import BaseModel, Field, field_validator
 from pydantic_extra_types.coordinate import Longitude, Latitude
@@ -30,9 +31,7 @@ class PipelineModel(BaseModel):
     Long: Longitude
     Lat: Latitude
     Technology: str
-    SolarCapacity: float = Field(ge=0)
-    WindCapacity: float = Field(ge=0)
-    BESSCapacity: float = Field(ge=0)
+    Capacity: float = Field(ge=0)
     ProjectStatus: str
     RTBDate: datetime
     RAGStatus: str
@@ -102,7 +101,7 @@ class BaseEntity:
 
         # Load existing data if ID is provided, otherwise create a new record
         if not data:
-            pass
+            self.data = self.get_all()
         elif 'ID' in data:
             self.data = self.get_by_id(data['ID'])
         else:
@@ -170,6 +169,19 @@ class Pipeline(BaseEntity):
     def __init__(self, data=None):
         self.entity_type = 'pipelines'
         self.setup(data)
+
+        # self.extend_with_counterparty()
+
+    def extend_with_counterparty(self):
+
+
+        result = pd.merge(self.data, Counterparty().get_all(), how='left', left_on='CounterpartyID', right_on='ID', suffixes=('', '_counterparty'))
+
+        # Drop the duplicate ID column from the second data frame
+        self.data = result.drop(columns=['ID_counterparty'])
+
+
+        return True
 
 class InformationPoint(BaseEntity):
     def __init__(self, data=None):

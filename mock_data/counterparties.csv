@@ -1,24 +1,15 @@
 ID,CounterpartyName,CEO,Strategy,PlatformLead,DealLead,FinanceLead,Created,LastModified
-67cfd292-a7d8-47b5-a8eb-f345f7bd4337,Green Energy Corp is the best,Euan Campbell,Diversify product portfolio,Joseph Jones,Joseph Hernandez,Susan Smith,,2024-07-20 14:29:35.647606+00:00
-1b5add9a-3006-4901-91db-fe26ab52d014,Blue Ocean Ltd is a great company,Barbara Martin,Enhance customer experience,John Davis,Jessica Smith,Elizabeth Miller,,2024-07-20 14:29:35.647606+00:00
-bb511707-1bea-4011-baf8-1d8cc38bd473,Red Rock Industries,Charles Anderson,Enhance customer experience,Charles Martin,Michael Miller,Mary Gonzalez,,2024-07-20 14:29:35.647606+00:00
-34f50785-96b8-48af-a976-58e98b806a0c,Yellow Sun Enterprises,David Davis,Diversify product portfolio,Patricia Moore,Elizabeth Davis,Patricia Hernandez,,2024-07-20 14:29:35.647606+00:00
-b4e6573c-6b49-4672-8bc1-0fc88c31d952,Silver Mountain Holdings,Linda Johnson,Diversify product portfolio,Mary Gonzalez,Linda Wilson,Joseph Williams,,2024-07-20 14:29:35.647606+00:00
-fbfcff01-6816-4309-95bf-9fe432519546,Purple Wave Inc.,Karen Martin,Enhance customer experience,William Miller,Charles Taylor,Susan Hernandez,,2024-07-20 14:29:35.647606+00:00
-7b234e8d-16b8-4491-8b2c-3c019220de4d,Aqua Marine Solutions,Robert Thomas,Enhance customer experience,Robert Garcia,William Brown,Sarah Hernandez,,2024-07-20 14:29:35.647606+00:00
-f5d3d001-63e9-4d7a-93fe-a8a391da69a0,Golden Gate Tech,James Rodriguez,Increase digital presence,James Garcia,Karen Johnson,John Anderson,,2024-07-20 14:29:35.647606+00:00
-4893ebe5-01f7-43d0-abf1-a6824163b852,Crimson Tide Logistics,James Anderson,Increase digital presence,Thomas Brown,Sarah Gonzalez,Linda Martin,,2024-07-20 14:29:35.647606+00:00
-ec95b0b5-f648-4ca2-b45c-5e0b8a1ff4d4,Euan's regenerative energy,Jennifer Taylor,Diversify product portfolio,Barbara Anderson,Jessica Thomas,Thomas Smith,,2024-07-20 14:29:35.647606+00:00
-fe43674f-3a30-4720-bad9-557602ecc18e,Sapphire Valley Construction,Joseph Smith,Strengthen supply chain,Mary Lopez,Mary Moore,Jennifer Miller,,2024-07-20 14:29:35.647606+00:00
-64eed420-5fc8-4eb3-9b7e-02b84456f433,Amber Fields Agriculture,Michael Jones,Strengthen supply chain,Mary Davis,Joseph Hernandez,John Lopez,,2024-07-20 14:29:35.647606+00:00
-385cf12a-c9ed-4f20-a03e-c0f8d01a8cd5,Indigo Sky Aerospace,Sarah Hernandez,Enhance customer experience,Jennifer Rodriguez,Mary Johnson,Joseph Moore,,2024-07-20 14:29:35.647606+00:00
-be870c26-9dee-49a3-9e9b-90cefbc4e2b1,Ivory Coast Trading,John Jackson,Enhance customer experience,Karen Johnson,Richard Garcia,Michael Brown,,2024-07-20 14:29:35.647606+00:00
-2bcaaa1d-4aeb-45a3-9944-814c27e34cb9,New firm,New firm name,New firm name,New firm name,New firm name,New firm name,2024-07-19 00:14:43.636478+00:00,2024-07-20 14:29:35.647606+00:00
-f8761ef7-c33b-4915-ae2d-ff0ae9c3c510,test,,,,,,2024-07-19 00:33:56.089424+00:00,2024-07-20 14:29:35.647606+00:00
-676caa15-e125-42f5-bad7-23c1278d45c1,,test,test,test,tset,test,2024-07-19 13:02:34.350335+00:00,2024-07-20 14:29:35.647606+00:00
-3944164c-d8d8-43d4-9050-06a124ebe05a,,test,50,test,tset,test,2024-07-19 13:03:52.064811+00:00,2024-07-20 14:29:35.647606+00:00
-3944164c-d8d8-43d4-9050-06a124ebe05a,,test,50,test,tset,test,2024-07-19 13:03:52.064811+00:00,2024-07-20 14:29:35.647606+00:00
-2b60cf45-27ef-42f0-9619-ca2325ebf4b5,1,test,50,test,tset,test,2024-07-19 13:04:50.866004+00:00,2024-07-20 14:29:35.647606+00:00
-d7bb49ca-2baf-415b-98a3-5c0bd1598ada,Campbell Trust,Euan Campbell,Naomi Campbell,One more,One more,One more,2024-07-19 13:35:44.921468+00:00,2024-07-20 14:29:35.647606+00:00
-7c59fc50-6aa8-4df4-abaa-9b5a35e4d29c,Jaguar,Nick Cassidy,Mitch Evans,Someone else,Another person,Who is this,2024-07-20 13:49:45.540336+00:00,2024-07-20 14:29:35.647606+00:00
-cc075c5d-4324-43e6-9aaf-565c34a0a874,test counterpartyname,Me,You,Us,Are meant,to be,2024-07-20 14:22:38.760267+00:00,2024-07-20 14:29:35.647606+00:00
+67cfd292-a7d8-47b5-a8eb-f345f7bd4337,Green Energy Corp is the best,Euan Campbell,Diversify product portfolio,Joseph Jones,Joseph Hernandez,Susan Smith,2024-07-19 00:14:43.636478+00:00,2024-07-20 14:29:35.647606+00:00
+1b5add9a-3006-4901-91db-fe26ab52d014,Blue Ocean Ltd is a great company,Barbara Martin,Enhance customer experience,John Davis,Jessica Smith,Elizabeth Miller,2024-07-19 00:33:56.089424+00:00,2024-07-20 14:29:35.647606+00:00
+bb511707-1bea-4011-baf8-1d8cc38bd473,Red Rock Industries,Charles Anderson,Enhance customer experience,Charles Martin,Michael Miller,Mary Gonzalez,2024-07-19 13:02:34.350335+00:00,2024-07-20 14:29:35.647606+00:00
+34f50785-96b8-48af-a976-58e98b806a0c,Yellow Sun Enterprises,David Davis,Diversify product portfolio,Patricia Moore,Elizabeth Davis,Patricia Hernandez,2024-07-19 13:03:52.064811+00:00,2024-07-20 14:29:35.647606+00:00
+b4e6573c-6b49-4672-8bc1-0fc88c31d952,Silver Mountain Holdings,Linda Johnson,Diversify product portfolio,Mary Gonzalez,Linda Wilson,Joseph Williams,2024-07-19 13:03:52.064811+00:00,2024-07-20 14:29:35.647606+00:00
+fbfcff01-6816-4309-95bf-9fe432519546,Purple Wave Inc.,Karen Martin,Enhance customer experience,William Miller,Charles Taylor,Susan Hernandez,2024-07-19 13:04:50.866004+00:00,2024-07-20 14:29:35.647606+00:00
+7b234e8d-16b8-4491-8b2c-3c019220de4d,Aqua Marine Solutions,Robert Thomas,Enhance customer experience,Robert Garcia,William Brown,Sarah Hernandez,2024-07-19 13:35:44.921468+00:00,2024-07-20 14:29:35.647606+00:00
+f5d3d001-63e9-4d7a-93fe-a8a391da69a0,Golden Gate Tech,James Rodriguez,Increase digital presence,James Garcia,Karen Johnson,John Anderson,2024-07-20 13:49:45.540336+00:00,2024-07-20 14:29:35.647606+00:00
+4893ebe5-01f7-43d0-abf1-a6824163b852,Crimson Tide Logistics,James Anderson,Increase digital presence,Thomas Brown,Sarah Gonzalez,Linda Martin,2024-07-20 14:22:38.760267+00:00,2024-07-20 14:29:35.647606+00:00
+ec95b0b5-f648-4ca2-b45c-5e0b8a1ff4d4,Euan's regenerative energy,Jennifer Taylor,Diversify product portfolio,Barbara Anderson,Jessica Thomas,Thomas Smith,2024-07-22 18:45:58.679624+00:00,2024-07-20 14:29:35.647606+00:00
+fe43674f-3a30-4720-bad9-557602ecc18e,Sapphire Valley Construction,Joseph Smith,Strengthen supply chain,Mary Lopez,Mary Moore,Jennifer Miller,2024-07-19 00:14:43.636478+00:00,2024-07-20 14:29:35.647606+00:00
+64eed420-5fc8-4eb3-9b7e-02b84456f433,Amber Fields Agriculture,Michael Jones,Strengthen supply chain,Mary Davis,Joseph Hernandez,John Lopez,2024-07-19 00:33:56.089424+00:00,2024-07-20 14:29:35.647606+00:00
+385cf12a-c9ed-4f20-a03e-c0f8d01a8cd5,Indigo Sky Aerospace,Sarah Hernandez,Enhance customer experience,Jennifer Rodriguez,Mary Johnson,Joseph Moore,2024-07-19 13:02:34.350335+00:00,2024-07-20 14:29:35.647606+00:00
+be870c26-9dee-49a3-9e9b-90cefbc4e2b1,Ivory Coast Trading,John Jackson,Enhance customer experience,Karen Johnson,Richard Garcia,Michael Brown,2024-07-19 13:03:52.064811+00:00,2024-07-20 14:29:35.647606+00:00

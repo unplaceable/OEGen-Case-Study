@@ -4,6 +4,8 @@ import time
 
 from data_models.models import InformationPoint
 from components.tables import information_point_table
+from components.buttons import download_button
+from components.forms import create_information_point_form
 from SETTINGS import TECHNOLOGY_TYPES, RAG_STATUS, PIPELINE_STATUS
 
 
@@ -57,7 +59,7 @@ else:
     st.set_page_config(page_title="Information points search", page_icon="🔎")
     st.title(f"🔎 Information points search")
 
-    st.link_button('Create a new information point', '/Manage_information_points')
+    create_information_point_form()
     search_text = st.text_input('', max_chars=100, placeholder='Search (eg, Solar)')
 
     if search_text:
@@ -65,5 +67,10 @@ else:
 
         if len(results)==0:
             st.write('Nothing found')
-
-        information_point_table(results)
+        else:
+            download_button(results, file_name='information_points.csv')
+            information_point_table(results)
+    else:
+        all_information_points=InformationPoint().get_all()
+        download_button(all_information_points, file_name='information_points.csv')
+        information_point_table(all_information_points)

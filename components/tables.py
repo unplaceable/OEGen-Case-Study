@@ -3,74 +3,54 @@ import streamlit as st
 
 
 
-def pipeline_table(pipeline):
+def pipeline_table(pipelines):
     
-    # Function to render the text centered
-    def centered_text(text):
-        return f'<p style="text-align:center;">{text}</p>'
+    # Change the ProjectName column to be a link
+    pipelines['ProjectName'] = pipelines.apply(
+                                            lambda row: f'<a href="/Pipelines?pipeline_id={row["ID"]}">{row["ProjectName"]}</a>', 
+                                            axis=1
+                                        )
 
-    # Add headers
-    header_cols = st.columns([1, 2, 1, 1, 1])
-    header_cols[0].markdown(centered_text("ProjectName"), unsafe_allow_html=True)
-    header_cols[1].markdown(centered_text("Technology"), unsafe_allow_html=True)
-    header_cols[2].markdown(centered_text("ProjectStatus"), unsafe_allow_html=True)
-    header_cols[3].markdown(centered_text(""), unsafe_allow_html=True)
-    header_cols[4].markdown(centered_text(""), unsafe_allow_html=True)
+    # Filter DataFrame to only include the specified columns
+    columns_to_include = [
+        "ProjectName", "Technology", "Capacity", "ProjectStatus", "RAGStatus",
+    ]
+    df_filtered = pipelines[columns_to_include]
 
-    # Add data rows
-    for index, row in pipeline.iterrows():
-        col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 1, 1])
-        col1.markdown(centered_text(row["ProjectName"]), unsafe_allow_html=True)
-        col2.markdown(centered_text(row["Technology"]), unsafe_allow_html=True)
-        col3.markdown(centered_text(row["ProjectStatus"]), unsafe_allow_html=True)
-        col4.link_button("View", f"/Pipeline?pipeline_id={row['ID']}")
-        col5.link_button("Edit", f"/Pipeline?pipeline_id={row['ID']}&view_type=edit")
+    st.write(df_filtered.to_html(escape=False, index=False), unsafe_allow_html=True)
 
 
-def counterparty_table(counterparty):
-    
-    # Function to render the text centered
-    def centered_text(text):
-        return f'<p style="text-align:center;">{text}</p>'
+def counterparty_table(counterparties):
 
-    # Add headers
-    header_cols = st.columns([1, 2, 1, 1, 1])
-    header_cols[0].markdown(centered_text("Name"), unsafe_allow_html=True)
-    header_cols[1].markdown(centered_text("CEO"), unsafe_allow_html=True)
-    header_cols[2].markdown(centered_text("LastModified"), unsafe_allow_html=True)
-    header_cols[3].markdown(centered_text(""), unsafe_allow_html=True)
-    header_cols[4].markdown(centered_text(""), unsafe_allow_html=True)
+    # Change the ProjectName column to be a link
+    counterparties['CounterpartyName'] = counterparties.apply(
+                                            lambda row: f'<a href="/Counterparties?counterparty_id={row["ID"]}">{row["CounterpartyName"]}</a>', 
+                                            axis=1
+                                        )
 
-    # Add data rows
-    for index, row in counterparty.iterrows():
-        col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 1, 1])
-        col1.markdown(centered_text(row["CounterpartyName"]), unsafe_allow_html=True)
-        col2.markdown(centered_text(row["CEO"]), unsafe_allow_html=True)
-        col3.markdown(centered_text(row["LastModified"]), unsafe_allow_html=True)
-        col4.link_button("View", f"/Counterparty?counterparty_id={row['ID']}")
-        col5.link_button("Edit", f"/Counterparty?counterparty_id={row['ID']}&view_type=edit")
+    # Filter DataFrame to only include the specified columns
+    columns_to_include = [
+        "CounterpartyName", "CEO", "LastModified"
+    ]
+    df_filtered = counterparties[columns_to_include]
+
+    st.write(df_filtered.to_html(escape=False, index=False), unsafe_allow_html=True)
 
 
 def information_point_table(information_points):
-    
-    # Function to render the text centered
-    def centered_text(text):
-        return f'<p style="text-align:center;">{text}</p>'
 
-    # Add headers
-    header_cols = st.columns([1, 2, 1, 1, 1])
-    header_cols[0].markdown(centered_text("Title"), unsafe_allow_html=True)
-    header_cols[1].markdown(centered_text("Market"), unsafe_allow_html=True)
-    header_cols[2].markdown(centered_text("Rating"), unsafe_allow_html=True)
-    header_cols[3].markdown(centered_text(""), unsafe_allow_html=True)
-    header_cols[4].markdown(centered_text(""), unsafe_allow_html=True)
 
-    # Add data rows
-    for index, row in information_points.iterrows():
-        col1, col2, col3, col4, col5 = st.columns([1, 2, 1, 1, 1])
-        col1.markdown(centered_text(row["Title"]), unsafe_allow_html=True)
-        col2.markdown(centered_text(row["Market"]), unsafe_allow_html=True)
-        col3.markdown(centered_text(row["Rating"]), unsafe_allow_html=True)
-        col4.link_button("View", f"/Information_point?information_point_id={row['ID']}")
-        col5.link_button("Edit", f"/Information_point?information_point_id={row['ID']}&view_type=edit")
-        
+
+    # Change the ProjectName column to be a link
+    information_points['Title'] = information_points.apply(
+                                            lambda row: f'<a href="/Information_points?information_point_id={row["ID"]}">{row["Title"]}</a>', 
+                                            axis=1
+                                        )
+
+    # Filter DataFrame to only include the specified columns
+    columns_to_include = [
+        "Title", "Market", "Rating"
+    ]
+    df_filtered = information_points[columns_to_include]
+
+    st.write(df_filtered.to_html(escape=False, index=False), unsafe_allow_html=True)

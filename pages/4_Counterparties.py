@@ -5,6 +5,8 @@ import time
 from handlers.data.db import Data
 from data_models.models import Pipeline, Counterparty, Audit
 from components.tables import pipeline_table, counterparty_table
+from components.buttons import download_button
+from components.forms import create_counterparty_form
 from SETTINGS import TECHNOLOGY_TYPES, RAG_STATUS, PIPELINE_STATUS
 
 
@@ -55,7 +57,7 @@ if "counterparty_id" in st.query_params:
     # st.table(data=)
 
 
-    pipeline_table(Pipeline().search(counterparty['ID'], include_columns=['ID', 'ProjectName','Technology','ProjectStatus', 'RAGStatus', 'RTBDate']))
+    pipeline_table(Pipeline().search(counterparty['ID']))
 
     audit_history = Audit.get_history(counterparty['ID'])
     st.header('Audit history')
@@ -66,7 +68,7 @@ else:
     st.set_page_config(page_title="Counterparty search", page_icon="🔎")
     st.title(f"🔎 Counterparty search")
 
-    st.link_button('Create a new counterparty', '/Manage_counterparties')
+    create_counterparty_form()
     search_text = st.text_input('', max_chars=100, placeholder='Search (eg, Blue Ocean)')
 
     if search_text:
@@ -74,5 +76,10 @@ else:
 
         if len(results)==0:
             st.write('Nothing found')
-
-        counterparty_table(results)
+        else:
+            download_button(results, file_name='counterparties.csv')
+            counterparty_table(results)
+    else:
+        all_counterparties=Counterparty().get_all()
+        download_button(all_counterparties, file_name='counterparties.csv')
+        counterparty_table(all_counterparties)

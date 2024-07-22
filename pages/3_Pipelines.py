@@ -6,13 +6,13 @@ from handlers.data.db import Data
 from components.forms import create_pipeline_form
 from data_models.models import Pipeline, Counterparty, Audit
 from components.tables import pipeline_table
+from components.buttons import download_button
 from SETTINGS import TECHNOLOGY_TYPES, RAG_STATUS, PIPELINE_STATUS
 
 
 if "pipeline_id" in st.query_params:
 
     pipeline = Pipeline().get_by_id(st.query_params['pipeline_id'])[0]
-
     counterparty = Counterparty().get_by_id(pipeline['CounterpartyID'])[0]
     
     pipeline['CounterpartyName']=counterparty['CounterpartyName']
@@ -28,6 +28,9 @@ if "pipeline_id" in st.query_params:
 
     st.set_page_config(page_title=project_name, page_icon=page_icon)
     st.title(f'{page_icon} {project_name}')
+
+    if "view_type" not in st.query_params or st.query_params['view_type']=='view':
+        st.link_button("Edit", f"/Pipelines?pipeline_id={pipeline['ID']}&view_type=edit")
     st.subheader(f"with {counterparty['CounterpartyName']}")
 
     # Latest comment
@@ -39,8 +42,7 @@ if "pipeline_id" in st.query_params:
     col1, col2, col3 = st.columns(3)
     col1.metric(label="Technology", value=pipeline['Technology'])
     col2.metric(label="Progress", value=pipeline['ProjectStatus'])
-    capacity = float(pipeline['SolarCapacity'])+float(pipeline['WindCapacity'])+float(pipeline['BESSCapacity'])
-    col3.metric(label="Capacity", value=f'{capacity} MWp')
+    col3.metric(label="Capacity", value=f'{pipeline["Capacity"]} MWp')
 
     st.header('Pipeline info')
     if "view_type" not in st.query_params or st.query_params['view_type']=='view':
@@ -73,17 +75,13 @@ if "pipeline_id" in st.query_params:
     )
     
     st.header('Counterparty')
-    st.link_button('View', f"/Counterparty?counterparty_id={counterparty['ID']}")
+    st.link_button('View', f"/Counterparties?counterparty_id={counterparty['ID']}")
     st.table(data=counterparty)
 
     audit_history = Audit.get_history(counterparty['ID'])
     st.header('Audit history')
     st.table(data=audit_history)
         
-
-
-
-
 
 else:
     st.set_page_config(page_title="Pipeline search", page_icon="🔎")
@@ -94,14 +92,15 @@ else:
     search_text = st.text_input('', max_chars=100, placeholder='Search (eg, Solar)')
 
     if search_text:
-        # results = Pipeline().search(search_text, return_type='raw')
+
         results = Pipeline().search(search_text, include_columns=['ID', 'ProjectName','Technology','ProjectStatus', 'RAGStatus', 'RTBDate'])
 
         if len(results)==0:
             st.write('Nothing found')
-        # for result in results:
-        #     button_text = f"{result['ProjectName']}, {result['Technology']}, {result['ProjectStatus']}"
-        #     st.link_button(button_text, f"/Pipeline?pipeline_id={result['ID']}")
-
-
-        pipeline_table(results)
+        else:
+            download_button(results, file_name='pipelines.csv')
+            pipeline_table(results)
+    else:
+        all_pipelines = Pipeline().get_all()
+        download_button(all_pipelines, file_name='pipelines.csv')
+        pipeline_table(all_pipelines)

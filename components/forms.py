@@ -3,7 +3,8 @@ from pydantic import ValidationError
 
 from handlers.utilities.slack import new_pipeline_alert
 from SETTINGS import TECHNOLOGY_TYPES, RAG_STATUS, PIPELINE_STATUS
-from data_models.models import Pipeline, Counterparty
+from data_models.models import Pipeline, Counterparty, InformationPoint
+
 
 def create_pipeline_form():
 
@@ -25,9 +26,7 @@ def create_pipeline_form():
 
             technology = st.radio('Technology type', options=TECHNOLOGY_TYPES, index=None)
 
-            solar_capacity = st.number_input('Solar capacity (MWp)', min_value=0)
-            wind_capacity = st.number_input('Wind capacity (MWp)', min_value=0)
-            bess_capacity = st.number_input('BESS capacity (MWp)', min_value=0)
+            capacity = st.number_input('Capacity (MWp)', min_value=0)
 
             project_status = st.selectbox('Project status', options=PIPELINE_STATUS, index=None)
 
@@ -47,9 +46,7 @@ def create_pipeline_form():
             'Long': longitude,
             'Lat': latitude,
             'Technology': technology,
-            'SolarCapacity': solar_capacity,
-            'WindCapacity': wind_capacity,
-            'BESSCapacity': bess_capacity,
+            'Capacity': capacity,
             'RTBDate': rtb_date,
             'RAGStatus': rag_status,
             'RAGComment': rag_comment,
@@ -67,3 +64,80 @@ def create_pipeline_form():
         
         
         new_pipeline_alert(new_pipeline)
+
+
+def create_counterparty_form():
+
+    with st.expander("Create a new counterparty"):
+        with st.form("add_counterparty_form"):
+            counterparty_name = st.text_input('Counterparty name', max_chars=100)
+            
+            ceo_name = st.text_input('CEO', max_chars=100)
+
+            strategy = st.text_input('Strategy', max_chars=100)
+
+
+            platform_lead = st.text_input('Platform lead', max_chars=100)
+
+            deal_lead = st.text_input('Deal lead', max_chars=100)
+
+            finance_lead = st.text_input('Finance lead', max_chars=100)
+
+            new_counterparty_submitted = st.form_submit_button("Submit")
+
+    if new_counterparty_submitted:
+        try:
+            Counterparty({
+                'CounterpartyName': counterparty_name,
+                'CEO': ceo_name,
+                'Strategy': strategy,
+                'PlatformLead': platform_lead,
+                'DealLead': deal_lead,
+                'FinanceLead': finance_lead
+            })
+            st.toast(f'New counterparty created: {counterparty_name}', icon="✅")
+        except ValidationError as exc:
+            st.error(f"{repr(exc.errors()[0]['loc'])}: {repr(exc.errors()[0]['msg'])}")
+            st.stop()
+    
+
+
+def create_information_point_form():
+
+    with st.expander("Create a new Information Point"):
+        with st.form("add_information_point_form"):
+
+            title = st.text_input('Title', max_chars=100)
+            
+            description = st.text_area('Description', max_chars=500)
+
+            market = st.text_input('Market', max_chars=100)
+
+            technology = st.radio('Technology', options=TECHNOLOGY_TYPES, index=None)
+
+            all_counterparties = [counterparty['CounterpartyName'] for counterparty in Counterparty().get_all(return_type='raw')]
+            counterparties = str(st.multiselect('Counterparties', options=all_counterparties))
+
+            impact = st.slider("Impact (1-100)", min_value=1, max_value=100, value=1)
+
+            likelihood = st.slider("Likelihood (1-100)", min_value=1, max_value=100, value=1)
+
+            new_information_point_submitted = st.form_submit_button("Submit")
+
+    if new_information_point_submitted:
+        try:
+            InformationPoint({
+                'Title': title,
+                'Description': description,
+                'Market': market,
+                'Technology': technology,
+                'Counterparties': counterparties,
+                'Impact': impact,
+                'Likelihood': likelihood
+            })
+        except ValidationError as exc:
+            st.error(f"{repr(exc.errors()[0]['loc'])}: {repr(exc.errors()[0]['msg'])}")
+            st.stop()
+
+
+        st.toast(f'New information point created: {title}', icon="✅")

@@ -5,3 +5,4 @@ pydantic-extra-types==2.9.0
 matplotlib==3.9.1
 scikit-learn==1.5.1
 numpy==2.0.0
+plotly==5.22.0

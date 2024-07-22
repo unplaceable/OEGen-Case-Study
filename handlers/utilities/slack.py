@@ -19,7 +19,7 @@ def new_pipeline_alert(pipeline_data):
 					"type": "plain_text",
 					"text": "View pipeline"
 				},
-				"url": f"http://localhost:8501/Pipeline?pipeline_id={pipeline_data['ID']}"
+				"url": f"http://localhost:8501/Pipelines?pipeline_id={pipeline_data['ID']}"
 			}
 		}
 	]

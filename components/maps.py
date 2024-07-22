@@ -4,7 +4,6 @@ import pydeck as pdk
 
 def pipeline_locations_with_capacity_and_rag(pipeline_df):
 
-    pipeline_df["TotalCapacity"] = pipeline_df["SolarCapacity"] + pipeline_df["WindCapacity"] + pipeline_df["BESSCapacity"]
     # Define a function to get fill color based on RAGStatus
     def get_fill_color(status):
         if status == "Red":
@@ -22,7 +21,7 @@ def pipeline_locations_with_capacity_and_rag(pipeline_df):
         "ColumnLayer",
         data=pipeline_df,
         get_position=["Long", "Lat"],
-        get_elevation="TotalCapacity",
+        get_elevation="Capacity",
         elevation_scale=1000,
         radius=10000,
         get_fill_color="fill_color",
@@ -42,7 +41,7 @@ def pipeline_locations_with_capacity_and_rag(pipeline_df):
     deck = pdk.Deck(
         layers=[layer],
         initial_view_state=view_state,
-        tooltip={"text": "{ProjectName}\nTotal Capacity: {TotalCapacity} MW\nStatus: {RAGStatus}\nLat: {Lat}\nLong: {Long}"}
+        tooltip={"text": "{ProjectName}\nCapacity: {Capacity} MW\nStatus: {RAGStatus}\nLat: {Lat}\nLong: {Long}"}
     )
 
     # Display the map in Streamlit

@@ -3,6 +3,7 @@ from datetime import datetime
 from pydantic import ValidationError
 
 from components.forms import create_pipeline_form
+from components.buttons import download_button
 from handlers.utilities.streamlit_utils import convert_df_to_csv
 from SETTINGS import TECHNOLOGY_TYPES, RAG_STATUS, PIPELINE_STATUS
 from data_models.models import Pipeline, Counterparty
@@ -26,13 +27,7 @@ if search_text:
 else:
     pipeline_data=Pipeline().get_all()
 
-# Download button
-right.download_button(
-    label=f"Download as CSV (Total: {len(pipeline_data)})",
-    data=convert_df_to_csv(pipeline_data),
-    file_name="large_df.csv",
-    mime="text/csv",
-)
+download_button(pipeline_data, file_name='pipelines.csv', location=right)
 
 # Editable table
 edited_df = st.data_editor(
