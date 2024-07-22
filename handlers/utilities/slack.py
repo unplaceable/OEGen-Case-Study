@@ -1,6 +1,5 @@
-
-from config import new_pipeline_webhook
 import requests
+import os
 
 
 def new_pipeline_alert(pipeline_data):
@@ -32,4 +31,4 @@ def new_pipeline_alert(pipeline_data):
 
 def post_message(message):
 
-    x = requests.post(new_pipeline_webhook, json = message)
+    x = requests.post(os.environ.get('NEW_PIPELINE_SLACK_WEBHOOK', None), json = message)
