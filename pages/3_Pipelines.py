@@ -93,7 +93,7 @@ else:
 
     if search_text:
 
-        results = Pipeline().search(search_text, include_columns=['ID', 'ProjectName','Technology','ProjectStatus', 'RAGStatus', 'RTBDate'])
+        results = Pipeline().search(search_text)
 
         if len(results)==0:
             st.write('Nothing found')
