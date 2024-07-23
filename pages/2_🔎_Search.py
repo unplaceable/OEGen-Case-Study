@@ -29,7 +29,7 @@ if search_text:
     
     # Pipeline results
     st.markdown('### Pipelines')
-    results = Pipeline().search(search_text, include_columns=['ID', 'ProjectName','Technology','ProjectStatus', 'RAGStatus', 'RTBDate'])
+    results = Pipeline().search(search_text)
 
     if len(results)==0:
         st.write('Nothing found')
@@ -41,7 +41,7 @@ if search_text:
 
     # Counterparty results
     st.markdown('### Counterparties')
-    results = Counterparty().search(search_text, include_columns=['ID', 'CounterpartyName', 'CEO', 'LastModified'])
+    results = Counterparty().search(search_text)
 
     if len(results)==0:
         st.write('Nothing found')
@@ -53,7 +53,7 @@ if search_text:
 
     # Information points results
     st.markdown('### Information points')
-    results = InformationPoint().search(search_text, include_columns=['ID', 'Title', 'Market', 'Technology', 'Rating'])
+    results = InformationPoint().search(search_text)
 
     if len(results)==0:
         st.write('Nothing found')
